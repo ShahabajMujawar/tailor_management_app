@@ -1,0 +1,90 @@
+TAILORPRO - TAILOR MANAGEMENT SYSTEM SETUP INSTRUCTIONS
+========================================================================
+
+Follow these step-by-step instructions to set up and run this Flutter
+application on any other system.
+
+------------------------------------------------------------------------
+STEP 1: PREREQUISITES (INSTALL SDK & TOOLS)
+------------------------------------------------------------------------
+
+1. INSTALL GIT:
+   - Download and install Git from: https://git-scm.com/downloads
+   - Verify it works by running: git --version
+
+2. INSTALL FLUTTER SDK:
+   - Download the latest stable Flutter SDK from:
+     https://docs.flutter.dev/get-started/install/windows
+   - Extract the downloaded ZIP file to a path on your drive
+     (e.g., C:\flutter or C:\src\flutter).
+   - IMPORTANT: Do NOT extract it into folders requiring admin rights
+     like "Program Files".
+
+3. ADD FLUTTER TO ENVIRONMENT PATH:
+   - Open the Windows Start Search, type "env" and select "Edit the
+     system environment variables".
+   - Click "Environment Variables..." at the bottom right.
+   - Under "User variables", find the variable named "Path", select
+     it, and click "Edit...".
+   - Click "New" and paste the path to your extracted flutter/bin folder:
+     e.g., C:\flutter\bin
+   - Click "OK" on all windows to save and exit.
+   - Verify it works by opening a NEW Command Prompt/PowerShell and running:
+     flutter --version
+
+4. SYSTEM HEALTH CHECK:
+   - Run the health diagnostic tool to ensure your environment is healthy:
+     flutter doctor
+   - (Note: You need at least one target platform configured, such as Chrome
+     for web, or Android Studio for android emulators).
+
+------------------------------------------------------------------------
+STEP 2: GET THE CODE ON THE NEW SYSTEM
+------------------------------------------------------------------------
+
+1. Open your terminal/command prompt.
+2. Clone your GitHub repository to a folder on your machine:
+   git clone https://github.com/ShahabajMujawar/tailor_management_app.git
+3. Navigate into the project folder:
+   cd tailor_management_app
+
+------------------------------------------------------------------------
+STEP 3: INITIALIZE & RUN THE APP
+------------------------------------------------------------------------
+
+1. GENERATE PLATFORM FILES:
+   Because files like the android/ or web/ folders are automatically
+   gitignored to keep the repository lightweight, you must generate them
+   on the new machine by running:
+   
+   flutter create .
+
+2. RESTORE DART DEPENDENCIES:
+   Download and resolve the package dependencies (such as Riverpod,
+   GoRouter, and SQLite/sqflite) defined in pubspec.yaml:
+   
+   flutter pub get
+
+3. LAUNCH THE APP:
+   - Run the app on the default browser/connected emulator:
+     flutter run
+   - Or target a specific browser like Google Chrome:
+     flutter run -d chrome
+
+------------------------------------------------------------------------
+STEP 4: LOGGING IN & NAVIGATING THE APP
+------------------------------------------------------------------------
+
+- When the app launches, it boots on the Splash screen, checks if an
+  active session exists, and redirects you to the Login screen.
+- Since it is a fresh local database, there are no accounts yet.
+- Click the "Create Account" button on the login screen.
+- Register with a email and password (this is saved in your local SQLite DB).
+- Upon registration, you will be taken to the Dashboard.
+- Use the bottom navigation bar to switch between the 5 main sections:
+  * Dashboard (Shop statistics and today's schedule)
+  * Customers (Directory, measurements templates, customer profiles)
+  * Orders (Job cards, status pipeline: Cutting, Stitching, Trial, Ready)
+  * Search (Unified mobile and name database lookup)
+  * Settings (Excel data backup export/import and shop config)
+========================================================================
