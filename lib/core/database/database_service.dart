@@ -24,12 +24,35 @@ class DatabaseService {
     final pathString = join(dbPath, 'tailor_management_system.db');
     _logger.i('Initializing SQLite Database at: $pathString');
 
-    return await openDatabase(
+    final db = await openDatabase(
       pathString,
       version: 1,
       onCreate: _onCreate,
       onConfigure: _onConfigure,
     );
+
+    await _seedDummyUser(db);
+    return db;
+  }
+
+  Future<void> _seedDummyUser(Database db) async {
+    final results = await db.rawQuery(
+      'SELECT id FROM users WHERE username = ? LIMIT 1',
+      ['admin@tailorpro.com'],
+    );
+
+    if (results.isEmpty) {
+      _logger.i('Seeding dummy user...');
+      await db.rawInsert(
+        'INSERT INTO users (username, password_hash, role, created_at) VALUES (?, ?, ?, ?)',
+        [
+          'admin@tailorpro.com',
+          '4f978b3ceefd1c1f18017dabc6fc3a42ff48bfbe30a576fd97316a3f24e47a34', // password123
+          'admin',
+          DateTime.now().toIso8601String()
+        ],
+      );
+    }
   }
 
   Future<void> _onConfigure(Database db) async {
