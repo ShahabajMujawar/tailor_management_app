@@ -1,0 +1,51 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.project
+.settings/
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Android
+.gradle/
+local.properties
+*.apk
+*.ap_
+*.dex
+*.key
+*.pub
+*.sig
+*.keystore
+
+# iOS
+*.mode1v3
+*.mode2v3
+*.nib
+*.page
+*.pbxuser
+*.perspectivev3
+*.xcworkspace
+xcuserdata/
+DerivedData/
+
+# Web
+.gcloud/
+node_modules/
